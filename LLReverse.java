@@ -1,18 +1,20 @@
 
-class LL {
+class LLReverse {
+
     Node head;
+
     class Node {
 
-        String data;
+        int data;
         Node next;
 
-        Node(String data) {
+        Node(int data) {
             this.data = data;
             this.next = null;
         }
     }
 
-    public void addFirst(String data) {
+    public void addFirst(int data) {
         Node newNode = new Node(data);
         if (head == null) {
             head = newNode;
@@ -22,7 +24,7 @@ class LL {
         head = newNode;
     }
 
-    public void addLast(String data) {
+    public void addLast(int data) {
         Node newNode = new Node(data);
         if (head == null) {
             head = newNode;
@@ -48,14 +50,31 @@ class LL {
         System.out.println("NULL");
     }
 
+    public void reverseIterate() {
+        if (head == null || head.next == null) {
+            return;
+        }
+        Node prevNode = head;
+        Node currNode = head.next;
+        while (currNode != null) {
+            Node nextNode = currNode.next;
+            currNode.next = prevNode;
+
+            prevNode = currNode;
+            currNode = nextNode;
+        }
+        head.next = null;
+        head = prevNode;
+    }
+
     public static void main(String[] args) {
-        LL list = new LL();
-        list.addFirst("a");
-        list.addFirst("is");
+        LLReverse list = new LLReverse();
+        list.addLast(1);
+        list.addLast(2);
+        list.addLast(3);
+        list.addLast(4);
         list.printList();
-        list.addLast("list");
-        list.printList();
-        list.addFirst("This");
+        list.reverseIterate();
         list.printList();
 
     }
