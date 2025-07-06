@@ -2,16 +2,14 @@
 class LL {
     Node head;
     class Node {
-
         String data;
         Node next;
-
         Node(String data) {
             this.data = data;
             this.next = null;
         }
     }
-
+    //add in first
     public void addFirst(String data) {
         Node newNode = new Node(data);
         if (head == null) {
@@ -21,7 +19,7 @@ class LL {
         newNode.next = head;
         head = newNode;
     }
-
+    //add in last
     public void addLast(String data) {
         Node newNode = new Node(data);
         if (head == null) {
@@ -34,7 +32,7 @@ class LL {
         }
         currNode.next = newNode;
     }
-
+    //print data
     public void printList() {
         if (head == null) {
             System.out.println("List is empty");
@@ -47,7 +45,6 @@ class LL {
         }
         System.out.println("NULL");
     }
-
     public static void main(String[] args) {
         LL list = new LL();
         list.addFirst("a");
@@ -57,6 +54,5 @@ class LL {
         list.printList();
         list.addFirst("This");
         list.printList();
-
     }
 }
