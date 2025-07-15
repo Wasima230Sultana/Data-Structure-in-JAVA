@@ -30,7 +30,6 @@ public class BinaryTreePIP {
             newNode.left = buildtree(nodes);
             newNode.right = buildtree(nodes);
             return newNode;
-
         }
     }
 
@@ -41,7 +40,6 @@ public class BinaryTreePIP {
         System.out.print(root.data + " ");
         preorder(root.left);
         preorder(root.right);
-
     }
 
     public static void inorder(Node root) {
@@ -51,7 +49,6 @@ public class BinaryTreePIP {
         inorder(root.left);
         System.out.print(root.data + " ");
         inorder(root.right);
-
     }
 
     public static void postorder(Node root) {
@@ -61,7 +58,6 @@ public class BinaryTreePIP {
         postorder(root.left);
         postorder(root.right);
         System.out.print(root.data + " ");
-
     }
 
     public static void levelorder(Node root) {
@@ -99,17 +95,25 @@ public class BinaryTreePIP {
         int leftNodes = countOfNodes(root.left);
         int rightNodes = countOfNodes(root.right);
         return leftNodes + rightNodes + 1;
-
     }
 
-     public static int sumOfNodes(Node root) {
+    public static int sumOfNodes(Node root) {
         if (root == null) {
             return 0;
         }
         int leftSum = sumOfNodes(root.left);
         int rightSum = sumOfNodes(root.right);
         return leftSum + rightSum + root.data;
+    }
 
+    public static int height(Node root) {
+        if (root == null) {
+            return 0;
+        }
+        int leftHeight = height(root.left);
+        int rightHeight = height(root.right);
+        int myHeight = Math.max(leftHeight, rightHeight) + 1;
+        return myHeight;
     }
 
     public static void main(String[] args) {
@@ -126,8 +130,10 @@ public class BinaryTreePIP {
         levelorder(root);
         // O(n)
         System.out.println(countOfNodes(root));
+        // O(n)
         System.out.println(sumOfNodes(root));
-
+        // O(n)
+        System.out.println(height(root));
 
     }
 }
