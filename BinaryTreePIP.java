@@ -102,6 +102,16 @@ public class BinaryTreePIP {
 
     }
 
+     public static int sumOfNodes(Node root) {
+        if (root == null) {
+            return 0;
+        }
+        int leftSum = sumOfNodes(root.left);
+        int rightSum = sumOfNodes(root.right);
+        return leftSum + rightSum + root.data;
+
+    }
+
     public static void main(String[] args) {
         int nodes[] = {1, 2, 4, -1, -1, 5, -1, -1, 3, -1, 6, -1, -1};
         BinaryTree tree = new BinaryTree();
@@ -112,8 +122,12 @@ public class BinaryTreePIP {
         System.out.println();
         postorder(root);
         System.out.println();
+        // O(n)
         levelorder(root);
+        // O(n)
         System.out.println(countOfNodes(root));
+        System.out.println(sumOfNodes(root));
+
 
     }
 }
