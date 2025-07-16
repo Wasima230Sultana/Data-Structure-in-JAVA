@@ -116,6 +116,15 @@ public class BinaryTreePIP {
         return myHeight;
     }
 
+        public static int diameter(Node root) {
+        if (root == null) {
+            return 0;
+        }
+        int diam1 = diameter(root.left);
+        int diam2 = diameter(root.right);
+        int diam3 = height(root.left) + height(root.right) +1 ;
+        return Math.max(diam3 ,Math.max(diam1, diam2));
+    }
     public static void main(String[] args) {
         int nodes[] = {1, 2, 4, -1, -1, 5, -1, -1, 3, -1, 6, -1, -1};
         BinaryTree tree = new BinaryTree();
@@ -134,6 +143,8 @@ public class BinaryTreePIP {
         System.out.println(sumOfNodes(root));
         // O(n)
         System.out.println(height(root));
+        // O(n^2)
+        System.out.println(diameter(root));
 
     }
 }
